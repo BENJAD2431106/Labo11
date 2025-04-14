@@ -26,7 +26,9 @@ namespace Partie2
 
         public override string ToString()
         {
-            return $"Le film: {Titre}";
+            return "Le film : " + Titre + " est sortie en " + AnneeDeSortie + "\n" +
+                " Son genre est "+Genres+" Directeur : "+Directeur+" et acteurs :"+Acteurs+"\n"+
+                "Synopsis : "+Synopsis;
         }
     }
 }
