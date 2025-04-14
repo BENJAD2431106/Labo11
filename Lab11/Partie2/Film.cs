@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +8,10 @@ namespace Partie2
 {
     public partial class Film
     {
-        string Titre { get; set; }
+        public string Titre { get; set; }
         string Directeur { get; set; }
         int AnneeDeSortie { get; set; }
-        List<String> Acteurs { get; set; }
+        public List<String> Acteurs { get; set; }
         public Film(string titre, string directeur, int anneeDeSortie, string synopsis)
         {
             Titre = titre;
