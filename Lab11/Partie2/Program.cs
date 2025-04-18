@@ -6,7 +6,7 @@
         {
             Production production = new Production();
             Console.WriteLine("1-Souhai");
-            production.RechTitre();
+            production.RechActeur();
         }
     }
 }

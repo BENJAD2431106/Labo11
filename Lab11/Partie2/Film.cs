@@ -12,22 +12,42 @@ namespace Partie2
         string Directeur { get; set; }
         int AnneeDeSortie { get; set; }
         public List<String> Acteurs { get; set; }
-        public Film(string titre, string directeur, int anneeDeSortie, string synopsis, List<string> acteurs)
+        string Synopsis { get; set; }
+        List<string> Genres { get; set; }
+        public Film(string titre, string directeur, int anneeDeSortie, string synopsis, List<string> acteurs, List<string> genres)
         {
             Titre = titre;
             Directeur = directeur;
             AnneeDeSortie = anneeDeSortie;
             Acteurs = acteurs;
-            Genres = new List<String>();
+            this.Genres = genres;
             Synopsis = synopsis;
         }
-        string Synopsis { get; set; }
-        List<string> Genres { get; set; }
+        public string GetInfoGenres()
+        {
+            string info = "";
+            foreach (string genre in Genres)
+            {
+                info += genre + " ";
+            }
+            return info;
+        }
+
+        public string GetInfoActeurs()
+        {
+            string info = "";
+            foreach (string acteur in Acteurs)
+            {
+                info += acteur + " ";
+            }
+            return info;
+        }
         public override string ToString()
         {
             return "Le film : " + Titre + " est sortie en " + AnneeDeSortie + "\n" +
-                " Son genre est "+Genres+" Directeur : "+Directeur+" et acteurs :"+Acteurs+"\n"+
-                "Synopsis : "+Synopsis;
+                " Son genre est "+ GetInfoGenres() +" Directeur : "+ Directeur +" et acteurs :"+ GetInfoActeurs() +"\n"+
+                "Synopsis : "+ Synopsis
+                +"\n";
         }
     }
 }

@@ -25,20 +25,27 @@ namespace Partie2
         {
             Console.WriteLine("Quel film voulez-vous rechercher? ");
             string choix = Console.ReadLine();
+            string filmChoisi = "";
             foreach (var filmRech in films)
             {
                 if (choix == filmRech.Titre)
                 {
                     Console.WriteLine(filmRech);
+                    filmChoisi = filmRech.Titre;
                 }
-                else { Console.WriteLine("Ce film n'existe pas ou son titre est mal écrit.\n Veuillez reéssayer "); }
             }
+            if (filmChoisi != choix)
+            {
+                Console.WriteLine("Ce film n'existe pas ou son titre est mal écrit.\n Veuillez reéssayer ");
+            }
+            
         }
 
         public void RechecherParActeur()
         {
             Console.WriteLine("À l'aide de quel auteur voulez-vous rechercher un film? ");
             string choix = Console.ReadLine();
+            string acteurChoisi = "";
             foreach (Film filmRech in films)
             {
                 foreach (string acteur in filmRech.Acteurs)
@@ -46,9 +53,13 @@ namespace Partie2
                     if (choix == acteur)
                     {
                         Console.WriteLine(filmRech);
+                        acteurChoisi = acteur;
                     }
-                    else { Console.WriteLine("Ce film n'existe pas ou son auteur est introuvable.\n Veuillez reéssayer "); }
                 }
+            }
+            if (acteurChoisi != choix)
+            {
+                 Console.WriteLine("Ce film n'existe pas ou son auteur est introuvable.\n Veuillez reéssayer ");
             }
         }
         public string GetInfos()
