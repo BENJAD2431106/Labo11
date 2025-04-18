@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace Partie3
 {
-<<<<<<< HEAD
-    public partial class Mission
-    {
-        public void CompleterMission()
-        {
-            mission.Status = Status.Terminee;
-            Console.WriteLine("Allo la terre! Mission terminée");
-=======
-    public enum Status 
+    public enum Status
     {
         Planifiee,
         Encours,
@@ -22,6 +14,7 @@ namespace Partie3
     }
     public partial class Mission
     {
+
         string Nom {  get; set; }
         string Destination { get; set; }
         DateOnly DateDepart {  get; set; }
@@ -35,7 +28,11 @@ namespace Partie3
             DateDepart = dateDepart;
             DateArrive = dateArrive;
             Status = status;
->>>>>>> Feature1-Oleksandr04
+        }
+        public void CompleterMission()
+        {
+            Status = Status.Terminee;
+            Console.WriteLine("Allo la terre! Mission terminée");
         }
     }
 }

@@ -8,8 +8,7 @@ namespace Partie3
 {
     public partial class Vaisseau
     {
-<<<<<<< HEAD
-        string Nom {  get; set; }
+        string Nom { get; set; }
         int Capacite { get; set; }
         int ViteActuelle { get; set; }
         int VitMax { get; set; }
@@ -49,16 +48,17 @@ namespace Partie3
                     Console.WriteLine("Décollage réussi !");
                 else
                     Console.WriteLine("Décollage échoué");
-=======
-        public double ChangerVitesse()
+            }
+        }
+        public void ChangerVitesse()
         {
             try
             {
-                double nouvelleVitesse = 0;
-                if (nouvelleVitesse >= Vitesse)
+                int nouvelleVitesse = 0;
+                if (nouvelleVitesse >= ViteActuelle)
                     throw new ExceptionVitese("La vitesse demandée dépasse la vitesse maximale du vaisseau");
                 else
-                    Vitesse = nouvelleVitesse;
+                    ViteActuelle = nouvelleVitesse;
             }
             catch (ExceptionVitese exVit)
             {
@@ -67,7 +67,6 @@ namespace Partie3
             finally
             {
                 Console.WriteLine("Le changement d'une vitesse a été fait");
->>>>>>> Feature1-Oleksandr04
             }
         }
     }
