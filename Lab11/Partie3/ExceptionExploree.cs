@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Partie3
 {
-    public class ExceptionVitese : Exception
+    public class ExceptionExploree : Exception
     {
-        public ExceptionVitese(string message) : base(message)
+        public ExceptionExploree(string message) : base(message)
         {
 
         }

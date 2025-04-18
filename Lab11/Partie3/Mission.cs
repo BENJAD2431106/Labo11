@@ -16,15 +16,17 @@ namespace Partie3
     {
 
         string Nom {  get; set; }
-        string Destination { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         DateOnly DateDepart {  get; set; }
         DateOnly DateArrive { get; set; }
         Status Status { get; set; }
 
-        public Mission (string nom, string destination, DateOnly dateDepart, DateOnly dateArrive, Status status)
+        public Mission (string nom, int x, int y, DateOnly dateDepart, DateOnly dateArrive, Status status)
         {
             Nom = nom;
-            Destination = destination;
+            X = x;
+            Y = Y;
             DateDepart = dateDepart;
             DateArrive = dateArrive;
             Status = status;

@@ -8,11 +8,13 @@ namespace Partie3
 {
     public partial class Vaisseau
     {
+        Random rand = new Random();
         string Nom { get; set; }
         int Capacite { get; set; }
         int ViteActuelle { get; set; }
         int VitMax { get; set; }
         bool Orbite { get; set; }
+        List<Mission> missions = new List<Mission>();
         public Vaisseau(string nom, int capacite, int viteActuelle, int vitMax, bool orbite)
         {
             Nom = nom;
@@ -20,22 +22,39 @@ namespace Partie3
             ViteActuelle = viteActuelle;
             VitMax = vitMax;
             Orbite = orbite;
+            missions = new List<Mission>();
         }
-        public void Decollage(int x, int y, DateTime date)
-        {
-            List<string> missions = new List<string>();
+        public void Decollage(int x, int y, DateOnly date)
+        {            
+            string nom = "mission";
+            int nombre = rand.Next(1, 13434234);
+            int duree = rand.Next(0, 56);
+            nom += nombre;
             bool decollage = false;
-            string mission = "";
+            DateOnly dateArv = date.AddYears(duree);
             try
             {
-                if (Orbite == false)
+                if (Orbite == true)
                     throw new ExceptionOrbite("Vaisseau deja en orbite...");
                 else
                 {
-                    Orbite = false;
-                    mission += " Fusée " + Nom + " va vers -> X: " + x + " Y: " + y + " Le " + date;
-                    missions.Add(mission);
+                    Orbite = true;
                     decollage = true;
+                    if (date >= DateOnly.FromDateTime(DateTime.Now))
+                    {
+                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Planifiee);
+                        missions.Add(mission);
+                    }
+                    else if (date < DateOnly.FromDateTime(DateTime.Now) && dateArv > date)
+                    {
+                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Encours);
+                        missions.Add(mission);
+                    }
+                    else
+                    {
+                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Terminee);
+                        missions.Add(mission);
+                    }
                 }
             }
             catch (ExceptionOrbite ex)
@@ -54,7 +73,7 @@ namespace Partie3
         {
             try
             {
-                int nouvelleVitesse = 0;
+                int nouvelleVitesse = rand.Next(20000, 35001);
                 if (nouvelleVitesse >= ViteActuelle)
                     throw new ExceptionVitese("La vitesse demandée dépasse la vitesse maximale du vaisseau");
                 else
