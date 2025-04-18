@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Production production = new Production();
+            Console.WriteLine("1-Souhai");
+            production.RechTitre();
         }
     }
 }
