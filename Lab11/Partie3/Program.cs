@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            
+            List<Mission> missions = new List<Mission>();
         }
     }
 }

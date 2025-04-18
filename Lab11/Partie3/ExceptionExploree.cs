@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Partie3
 {
-    public class ExceptionExploree : Exception
+    public partial class ExceptionExploree : Exception
     {
         public ExceptionExploree(string message) : base(message)
         {

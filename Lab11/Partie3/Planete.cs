@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Partie3
 {
-    internal class Planete
+    public partial class Planete
     {
         string Nom { get; set; }
         int Taille { get; set; }
