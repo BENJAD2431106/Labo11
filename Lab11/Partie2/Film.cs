@@ -12,18 +12,17 @@ namespace Partie2
         string Directeur { get; set; }
         int AnneeDeSortie { get; set; }
         public List<String> Acteurs { get; set; }
-        public Film(string titre, string directeur, int anneeDeSortie, string synopsis)
+        public Film(string titre, string directeur, int anneeDeSortie, string synopsis, List<string> acteurs)
         {
             Titre = titre;
             Directeur = directeur;
             AnneeDeSortie = anneeDeSortie;
-            Acteurs = new List<String>();
+            Acteurs = acteurs;
             Genres = new List<String>();
             Synopsis = synopsis;
         }
         string Synopsis { get; set; }
         List<string> Genres { get; set; }
-
         public override string ToString()
         {
             return "Le film : " + Titre + " est sortie en " + AnneeDeSortie + "\n" +

@@ -11,8 +11,9 @@ namespace Partie2
         public Production()
         {
             Catalogue catalogue = new Catalogue();
-            Film film1 = new Film("Among Us", "Oleks", 2023, "Un homme dans l'eau va nager et se noir...");
-            Film film2 = new Film("La partie fantome", "Jad", 2018, "Des vacances ruinées à cause d'un jeu d'horreur.");
+            Film film1 = new Film("Among Us", "Oleks", 2023, "Un homme dans l'eau va nager et se noir...", ["Oleks","Jad","Vincent"]);
+            Film film2 = new Film("La partie fantome", "Jad", 2018, "Des vacances ruinées à cause d'un jeu d'horreur.", ["Oleks", "Jad", "Francis"]);
+            Film film3 = new Film("LOL", "Vincent", 1999, "Du rire à l'ancienne !", ["Vincent", "Jimmy", "Martin"]);
 
         }
     }
