@@ -11,10 +11,13 @@ namespace Partie3
         Random rand = new Random();
         string Nom { get; set; }
         int Capacite { get; set; }
-        int ViteActuelle { get; set; }
+        public int ViteActuelle { get; set; }
         int VitMax { get; set; }
-        bool Orbite { get; set; }
-        List<Mission> missions = new List<Mission>();
+        public bool Orbite { get; set; }
+        Mission mission;
+        public bool aReussiDecollage = false;
+        private int dernierX;
+        private int dernierY;
         public Vaisseau(string nom, int capacite, int viteActuelle, int vitMax, bool orbite)
         {
             Nom = nom;
@@ -22,10 +25,12 @@ namespace Partie3
             ViteActuelle = viteActuelle;
             VitMax = vitMax;
             Orbite = orbite;
-            missions = new List<Mission>();
+            
         }
-        public void Decollage(int x, int y, DateOnly date)
-        {            
+        public Mission Decollage(int x, int y, DateOnly date)
+        {  
+            dernierX = x;
+            dernierY = y;
             string nom = "mission";
             int nombre = rand.Next(1, 13434234);
             int duree = rand.Next(0, 56);
@@ -42,19 +47,17 @@ namespace Partie3
                     decollage = true;
                     if (date >= DateOnly.FromDateTime(DateTime.Now))
                     {
-                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Planifiee);
-                        missions.Add(mission);
+                        mission = new Mission(nom, x, y, date, dateArv, Status.Planifiee);
                     }
                     else if (date < DateOnly.FromDateTime(DateTime.Now) && dateArv > date)
                     {
-                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Encours);
-                        missions.Add(mission);
+                         mission = new Mission(nom, x, y, date, dateArv, Status.Encours);
                     }
                     else
                     {
-                        Mission mission = new Mission(nom, x, y, date, dateArv, Status.Terminee);
-                        missions.Add(mission);
+                         mission = new Mission(nom, x, y, date, dateArv, Status.Terminee);
                     }
+                    aReussiDecollage = true;
                 }
             }
             catch (ExceptionOrbite ex)
@@ -64,10 +67,11 @@ namespace Partie3
             finally
             {
                 if (decollage == true)
-                    Console.WriteLine("Décollage réussi !");
+                    Console.WriteLine("Décollage possible !");
                 else
-                    Console.WriteLine("Décollage échoué");
+                    Console.WriteLine("Décollage impossible / échoué");
             }
+            return mission;
         }
         public void ChangerVitesse()
         {
@@ -83,10 +87,17 @@ namespace Partie3
             {
                 Console.WriteLine(exVit.Message);
             }
-            finally
+        }
+        public override string ToString()
+        {
+
+            if (aReussiDecollage)
             {
-                Console.WriteLine("Le changement d'une vitesse a été fait");
+                return "Vaisseau " + Nom + " a réussi son décollage en direction de X : " + dernierX + " et Y : " + dernierY;
             }
+            else
+                return "Au final, pas décollage pour le Vaisseau "+Nom;
+                
         }
     }
 }
