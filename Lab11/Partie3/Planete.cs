@@ -4,7 +4,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-
+/// Code review des 3 parties fait par : Gabrielle Tremblay.
+/// Remarques : Il fallait faire plusieurs classes
+/// Réponse des étudiants (Alex & Jad) : On a fait une classe partielle et on travaillait sur la meme simultanément et une fois finie. on git...
 namespace Partie3
 {
     public partial class Planete

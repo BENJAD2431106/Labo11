@@ -41,7 +41,7 @@
                     Console.ReadLine();
                 }
                 else { Console.WriteLine("Touche incorrecte."); }
-            } while (char.ToLower(rep) != 'o' || char.ToLower(rep) != 'n');
+            } while (char.ToLower(rep) == 'o');
         }
     }
 }

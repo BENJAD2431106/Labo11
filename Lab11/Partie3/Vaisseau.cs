@@ -81,7 +81,8 @@ namespace Partie3
                 if (nouvelleVitesse >= ViteActuelle)
                     throw new ExceptionVitese("La vitesse demandée dépasse la vitesse maximale du vaisseau");
                 else
-                    ViteActuelle = nouvelleVitesse;
+                    Console.WriteLine("Vitesse passée de : " + ViteActuelle + " à : " + nouvelleVitesse);
+                    ViteActuelle = nouvelleVitesse;    
             }
             catch (ExceptionVitese exVit)
             {
